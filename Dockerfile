@@ -1,7 +1,3 @@
-# Use phusion/baseimage as base image. To make your builds reproducible, make
-# sure you lock down to a specific version, not to `latest`!
-# See https://github.com/phusion/baseimage-docker/blob/master/Changelog.md for
-# a list of version numbers.
 FROM phusion/baseimage
 EXPOSE 80
 
@@ -24,9 +20,9 @@ RUN apt-get -o Dpkg::Options::="--force-confold" -y install \
          apache2 \
          libapache2-mod-php7.0 \
          bzip2
-RUN sed -ri -e "s/^upload_max_filesize.*/upload_max_filesize = ${PHP_UPLOAD_MAX_FILESIZE}/" \
+RUN sed -ri \
+    -e "s/^upload_max_filesize.*/upload_max_filesize = ${PHP_UPLOAD_MAX_FILESIZE}/" \
     -e "s/^post_max_size.*/post_max_size = ${PHP_POST_MAX_SIZE}/" /etc/php/7.0/cli/php.ini
-
 
 COPY limesurvey.tar.bz2 /
 RUN tar xvjf /limesurvey.tar.bz2 \
