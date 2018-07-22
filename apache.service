@@ -1,2 +1,4 @@
 #!/bin/sh
+ cp -au /default/upload/* /var/www/html/upload/
+ 
 exec apache2ctl start
