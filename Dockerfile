@@ -15,6 +15,7 @@ RUN apt-get -o Dpkg::Options::="--force-confold" -y install \
          # php7.0-mysql \
          php7.0-pgsql \
          php7.0-gd \
+         php7.0-curl \
          php7.0-imap \
          php7.0-xml \
          apache2 \
